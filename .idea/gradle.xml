@@ -5,10 +5,10 @@
       <GradleProjectSettings>
         <option name="createEmptyContentRootDirectories" value="true" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/adressbook-web-tests" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/addressbook-web-tests" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/adressbook-web-tests" />
+            <option value="$PROJECT_DIR$/addressbook-web-tests" />
           </set>
         </option>
         <option name="useAutoImport" value="true" />
