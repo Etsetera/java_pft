@@ -49,11 +49,7 @@ public class ApplicationManager {
     }
   }
 
-  public void gotoHomePage() {
-    wd.findElement(By.linkText("home page")).click();
-  }
-
-  public void submitContactCreation() {
+    public void submitContactCreation() {
     wd.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
   }
 
