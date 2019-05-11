@@ -16,7 +16,7 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("(//input[@name='submit'])[2]"));
   }
 
-  public void fillContactForm(ContactData contactData, boolean creation ) {
+  public void fillContactForm(ContactData contactData, boolean creation) {
     type(By.name("firstname"), contactData.getFirstname());
     type(By.name("lastname"), contactData.getLastname());
     type(By.name("address"), contactData.getAddress());
@@ -26,9 +26,9 @@ public class ContactHelper extends HelperBase {
     if (creation) {
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
     } else {
-    Assert.assertFalse(isElementPresent(By.name("new_group")));
+      Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
-     }
+  }
 
   public void initContactCreation() {
     click(By.linkText("add new"));
@@ -56,5 +56,15 @@ public class ContactHelper extends HelperBase {
 
   public void deleteContactFromEdit() {
     click(By.xpath("(//input[@name='update'])[3]"));
+  }
+
+  public void createContact(ContactData contact) {
+    initContactCreation();
+    fillContactForm(contact, true);
+    submitContactCreation();
+  }
+
+  public boolean isThereAContact() {
+    return isElementPresent(By.name("selected[]"));
   }
 }
