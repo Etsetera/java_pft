@@ -27,6 +27,6 @@ public class GroupModificationTests extends TestBase {
 
     before.remove(before.size() - 1); // в чем смысл этой строки, если далее есть add?
     before.add(group);
-    Assert.assertEquals(new HashSet<>(before), new HashSet(after));
+    Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
   }
 }
