@@ -37,6 +37,14 @@ public class ContactData {
     return email;
   }
 
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "firstname='" + firstname + '\'' +
+            ", lastname='" + lastname + '\'' +
+            '}';
+  }
+
   public String getGroup() {
     return group;
   }
