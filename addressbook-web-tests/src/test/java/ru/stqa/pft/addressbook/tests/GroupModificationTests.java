@@ -25,8 +25,8 @@ public class GroupModificationTests extends TestBase {
     List<GroupData> after = app.getGroupHelper().getGroupList();
     Assert.assertEquals(after.size(), before.size());
 
-    before.remove(before.size() - 1); // в чем смысл этой строки, если далее есть add?
-    before.add(group);
+    before.remove(before.size() - 1); // удаляем из списка объект к-ый собираемся изменять
+    before.add(group); // добавляем вместо него тот, к-ый должен появится после модифиации
     Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
   }
 }
