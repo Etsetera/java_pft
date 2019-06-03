@@ -83,6 +83,10 @@ public class ContactHelper extends HelperBase {
     alertAcceptDeletionContact();
   }
 
+  public void deleteFromMod(ContactData contact) {
+    initContactModificationById(contact.getId());
+    deleteContactFromEdit();
+  }
   public boolean isThereAContact() {
     return isElementPresent(By.name("selected[]"));
   }

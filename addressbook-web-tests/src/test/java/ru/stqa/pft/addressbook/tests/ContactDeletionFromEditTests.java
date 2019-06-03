@@ -21,15 +21,15 @@ public class ContactDeletionFromEditTests extends TestBase {
   @Test
   public void testContractDeletionFromEdit() {
     Set<ContactData> before = app.contact().all();
-    ContactData modifiedContact = before.iterator().next();
-    app.contact().initContactModificationById(modifiedContact.getId());
-    app.contact().deleteContactFromEdit();
+    ContactData deletedContact = before.iterator().next();
+    app.contact().deleteFromMod(deletedContact);
     app.goTo().homePage();
     Set<ContactData> after = app.contact().all();
     Assert.assertEquals(after.size(), before.size() - 1);
 
-    before.remove(modifiedContact);
+    before.remove(deletedContact);
     Assert.assertEquals(before, after);
   }
+
 
 }
