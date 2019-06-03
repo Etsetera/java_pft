@@ -17,6 +17,13 @@ public class ContactHelper extends HelperBase {
     super(wd);
   }
 
+  public void homePage() {
+    if (isElementPresent(By.id("maintable"))) {
+      return;
+    }
+    click(By.linkText("home"));
+  }
+
   public void submitContactCreation() {
     click(By.xpath("(//input[@name='submit'])[2]"));
   }
@@ -66,26 +73,34 @@ public class ContactHelper extends HelperBase {
   }
 
   public void create(ContactData contact) {
+    homePage();
     initContactCreation();
     fillContactForm(contact, true);
     submitContactCreation();
+    homePage();
   }
 
   public void modify(ContactData contact) {
+    homePage();
     initContactModificationById(contact.getId());
     fillContactForm(contact, false);
     submitContactModification();
+    homePage();
   }
 
   public void delete(ContactData contact) {
+    homePage();
     selectContactById(contact.getId());
     deleteSelectedContact();
     alertAcceptDeletionContact();
+    homePage();
   }
 
   public void deleteFromMod(ContactData contact) {
+    homePage();
     initContactModificationById(contact.getId());
     deleteContactFromEdit();
+    homePage();
   }
   public boolean isThereAContact() {
     return isElementPresent(By.name("selected[]"));

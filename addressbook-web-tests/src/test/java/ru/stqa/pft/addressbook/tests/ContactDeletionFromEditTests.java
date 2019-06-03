@@ -14,8 +14,7 @@ public class ContactDeletionFromEditTests extends TestBase {
     if (app.contact().all().size()==0) {
       app.contact().create(new ContactData()
               .withFirstname("Elena").withLastname("Nikonova").withAddress("Samara, st Central 4-67").withMobile("89654206522").withEmail("nikon@testov.com").withGroup("test1"));
-      app.goTo().homePage();
-    }
+         }
   }
 
   @Test
@@ -23,7 +22,6 @@ public class ContactDeletionFromEditTests extends TestBase {
     Set<ContactData> before = app.contact().all();
     ContactData deletedContact = before.iterator().next();
     app.contact().deleteFromMod(deletedContact);
-    app.goTo().homePage();
     Set<ContactData> after = app.contact().all();
     Assert.assertEquals(after.size(), before.size() - 1);
 
