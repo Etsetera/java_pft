@@ -11,8 +11,9 @@ public class ContractDeletionTests extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions() {
-    if (app.group().list().size()==0) {
-      app.contact().create(new ContactData("Elena", "Nikonova", "Samara, st Central 4-67", "89654206522", "nikon@testov.com", "test1"));
+    if (app.contact().list().size()==0) {
+      app.contact().create(new ContactData()
+              .withFirstname("Elena").withLastname("Nikonova").withAddress("Samara, st Central 4-67").withMobile("89654206522").withEmail("nikon@testov.com").withGroup("test1"));
       app.goTo().homePage();
     }
   }
