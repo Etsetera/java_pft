@@ -14,7 +14,7 @@ public class ContractDeletionTests extends TestBase {
   public void ensurePreconditions() {
     if (app.contact().all().size()==0) {
       app.contact().create(new ContactData()
-              .withFirstname("Elena").withLastname("Nikonova").withAddress("Samara, st Central 4-67").withMobile("89654206522").withEmail("nikon@testov.com").withGroup("test1"));
+              .withFirstname("Elena").withLastname("Nikonova").withAddress("Samara, st Central 4-67").withMobilePhone("89654206522").withEmail("nikon@testov.com").withGroup("test1"));
     }
   }
 
