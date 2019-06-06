@@ -23,16 +23,4 @@
     <email3>nikon1@testov3.com</email3>
     <group>test1</group>
   </contact>
-  <contact>
-    <firstname>Elena2</firstname>
-    <lastname>Nikonova2</lastname>
-    <address>Samara, st Central 4-2</address>
-    <homePhone>+7(111)8562</homePhone>
-    <mobilePhone>22-222</mobilePhone>
-    <workPhone>33 33 32</workPhone>
-    <email>nikon2@testov.com</email>
-    <email2>nikon2@testov2.com</email2>
-    <email3>nikon2@testov3.com</email3>
-    <group>test1</group>
-  </contact>
 </list>
