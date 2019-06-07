@@ -20,18 +20,21 @@ public class GroupData {
   @Column(name = "group_header")
   @Type(type = "text")
   private String header;
-  @Column(name = "group_footer")
-  @Type(type = "text")
-  private String footer;
-
 
   @Override
   public String toString() {
     return "GroupData{" +
-            "id='" + id + '\'' +
+            "id=" + id +
             ", name='" + name + '\'' +
+            ", header='" + header + '\'' +
+            ", footer='" + footer + '\'' +
             '}';
   }
+
+  @Column(name = "group_footer")
+  @Type(type = "text")
+  private String footer;
+
 
   public int getId() {
     return id;
