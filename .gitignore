@@ -23,3 +23,4 @@ addressbook-web-tests/out/test/resources/testng-contacts.xml
 addressbook-web-tests/out/test/resources/testng-groups.xml
 addressbook-web-tests/out/test/resources/logback.xml
 *.log
+addressbook-web-tests/out/test/resources/hibernate.cfg.xml
