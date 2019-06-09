@@ -14,9 +14,10 @@ public class ContactDeletionFromEditTests extends TestBase {
   @BeforeMethod
   public void ensurePreconditions() {
     if (app.db().contacts().size()==0) {
-      Groups groups = app.db().groups();
+      //Groups groups = app.db().groups();
       app.contact().create(new ContactData()
-              .withFirstname("Elena").withLastname("Nikonova").withAddress("Samara, st Central 4-67").withMobilePhone("89654206522").withEmail("nikon@testov.com").inGroup(groups.iterator().next()));
+              .withFirstname("Elena").withLastname("Nikonova").withAddress("Samara, st Central 4-67").withMobilePhone("89654206522").withEmail("nikon@testov.com"));
+              //.inGroup(groups.iterator().next()));
          }
   }
 

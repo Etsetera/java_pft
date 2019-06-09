@@ -16,14 +16,14 @@ public class ContactInfoTest extends TestBase {
   @BeforeMethod
   public void ensurePreconditions() {
     if (app.contact().all().size() == 0) {
-      Groups groups = app.db().groups();
+      //Groups groups = app.db().groups();
       app.contact().create(new ContactData()
               .withFirstname("Elena").withLastname("Nikonova").withAddress("Samara, st Central 4-67")
               .withHomePhone("+7(111)856").withMobilePhone("22-22").withWorkPhone("33 33 33")
               .withEmail("nikon@testov.com")
               .withEmail2("nikon22@testov.com")
-              .withEmail3("nikon33@testov.com")
-              .inGroup(groups.iterator().next()));
+              .withEmail3("nikon33@testov.com"));
+              //.inGroup(groups.iterator().next()));
     }
   }
 
