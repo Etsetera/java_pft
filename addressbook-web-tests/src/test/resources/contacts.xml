@@ -9,7 +9,7 @@
     <email>nikon0@testov.com</email>
     <email2>nikon0@testov2.com</email2>
     <email3>nikon0@testov3.com</email3>
-    <group>test1</group>
+    <groups/>
   </contact>
   <contact>
     <firstname>Elena1</firstname>
@@ -21,6 +21,6 @@
     <email>nikon1@testov.com</email>
     <email2>nikon1@testov2.com</email2>
     <email3>nikon1@testov3.com</email3>
-    <group>test1</group>
+    <groups/>
   </contact>
 </list>

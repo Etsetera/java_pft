@@ -60,9 +60,10 @@ public class ContactDataGenerator {
   private void saveAsCsv(List<ContactData> contacts, File file) throws IOException {
    try (Writer writer = new FileWriter(file)) {
      for (ContactData contact : contacts) {
-       writer.write(String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n", contact.getFirstname(), contact.getLastname()
+       writer.write(String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s\n", contact.getFirstname(), contact.getLastname()
                ,contact.getAddress(), contact.getHomePhone(), contact.getMobilePhone()
-               ,contact.getWorkPhone(), contact.getEmail(), contact.getEmail2(), contact.getEmail3(), contact.getGroup()));
+               ,contact.getWorkPhone(), contact.getEmail(), contact.getEmail2(), contact.getEmail3()));
+       //, contact.getGroups()));
      }
    }
   }
@@ -74,7 +75,8 @@ public class ContactDataGenerator {
               .withLastname(String.format("Nikonova%s", i)).withAddress(String.format("Samara, st Central 4-%s", i))
               .withHomePhone(String.format("+7(111)856%s", i)).withMobilePhone(String.format("22-22%s", i))
               .withWorkPhone(String.format("33 33 3%s", i)).withEmail(String.format("nikon%s@testov.com", i))
-              .withEmail2(String.format("nikon%s@testov2.com", i)).withEmail3(String.format("nikon%s@testov3.com", i)).withGroup((String.format("test1"))));
+              .withEmail2(String.format("nikon%s@testov2.com", i)).withEmail3(String.format("nikon%s@testov3.com", i)));
+              //.withGroup((String.format("test1"))));
     }
     return contacts;
   }
