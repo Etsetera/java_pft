@@ -8,7 +8,7 @@ import ru.stqa.pft.addressbook.model.Contacts;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class ContractDeletionTests extends TestBase {
+public class ContactDeletionTests extends TestBase {
 
 
 
