@@ -17,27 +17,49 @@ public class ContactAddToGroup extends TestBase {
   @BeforeMethod
   public void ensurePreconditions() {
     if (app.db().groups().size() == 0) {
-      app.group().create(new GroupData().withName("test1").withHeader("header1").withFooter("footer1"));
+      app.group().create(new GroupData().withName("testAdd1").withHeader("header1").withFooter("footer1"));
     }
-    app.contact().deleteAllContacts();
+    if (app.db().contacts().size() == 0) {
+      app.contact().create(new ContactData()
+              .withFirstname("ElenaAdd").withLastname("NikonovaAdd").withAddress("Samara, st Central 4-67")
+              .withHomePhone("+7(111)856").withMobilePhone("22-22").withWorkPhone("33 33 33")
+              .withEmail("nikon@testov.com")
+              .withEmail2("nikon22@testov.com")
+              .withEmail3("nikon33@testov.com"));
+    }
+    int groupsCount = app.db().groups().size();
+    Contacts beforeContacts = app.db().contacts().stream()
+            .filter((a) -> a.getGroups().size() < groupsCount).collect(Collectors.toCollection(Contacts::new));
+    if (beforeContacts.size() == 0) {
+      app.group().create(new GroupData().withName("testAdd2").withHeader("header2").withFooter("footer2"));
+
+    }
 
   }
 
   @Test
   public void ContactAddToGroup() {
-    app.contact().create(new ContactData()
-            .withFirstname("Elena").withLastname("Nikonova").withAddress("Samara, st Central 4-67")
-            .withHomePhone("+7(111)856").withMobilePhone("22-22").withWorkPhone("33 33 33")
-            .withEmail("nikon@testov.com")
-            .withEmail2("nikon22@testov.com")
-            .withEmail3("nikon33@testov.com"));
-    Groups groups = app.db().groups();
-    Contacts contacts = app.db().contacts().stream().filter(contact -> contact.getGroups().size() < groups.size()).collect(Collectors.toCollection(Contacts::new));
-    ContactData modify = contacts.iterator().next();
-    groups.removeAll(modify.getGroups());
-    app.contact().addToGroup(modify, groups.iterator().next());
-    ContactData modified = app.db().contacts().stream().filter(c -> c.getId() == modify.getId()).collect(Collectors.toList()).iterator().next();
-    assertThat(modified.getGroups(), equalTo(modify.getGroups().withAdded(groups.iterator().next())));
+    int groupsCount = app.db().groups().size();
+    Groups beforeGroups = app.db().groups();
+    Groups groups = new Groups(beforeGroups);
+    Contacts beforeContacts = app.db().contacts();
+    Contacts filterContacts = app.db().contacts().stream()
+            .filter((a) -> a.getGroups().size() < groupsCount).collect(Collectors.toCollection(Contacts::new));
+    ContactData selectedContact = filterContacts.iterator().next();
+    Groups GroupsOfContact = selectedContact.getGroups();
+    groups.removeAll(GroupsOfContact);
+    GroupData thatGroup = groups.iterator().next();
+    app.contact().addToGroup(selectedContact, thatGroup);
+    Groups afterGroups = app.db().groups();
+    Contacts afterContacts = app.db().contacts();
+    Contacts filterContactsAfter = app.db().contacts().stream()
+            .filter((a) -> a.getId() == selectedContact.getId()).collect(Collectors.toCollection(Contacts::new));
+    ContactData selectedContactAfter = filterContactsAfter.iterator().next();
+    Groups groupsAfter = selectedContactAfter.getGroups();
+    assertThat(afterContacts, equalTo(beforeContacts));
+    assertThat(afterGroups, equalTo(beforeGroups));
+    assertThat(groupsAfter, equalTo(GroupsOfContact.withAdded(thatGroup)));
+
   }
 
 }

@@ -171,13 +171,6 @@ public class ContactHelper extends HelperBase {
     click(By.name("add"));
   }
 
-  public void deleteAllContacts() {
-    homePage();
-    click(By.id("MassCB"));
-    deleteSelectedContact();
-    alertAcceptDeletionContact();
-  }
-
   public void deleteFromGroup(ContactData contactData) {
     homePage();
     click(By.xpath(String.format("//a[@href='view.php?id=%s']/img[@alt='Details']", contactData.getId())));

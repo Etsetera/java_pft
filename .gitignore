@@ -24,3 +24,8 @@ addressbook-web-tests/out/test/resources/testng-groups.xml
 addressbook-web-tests/out/test/resources/logback.xml
 *.log
 addressbook-web-tests/out/test/resources/hibernate.cfg.xml
+sandbox/out/production/classes/ru/stqa/pfr/sandbox/Square.class
+sandbox/out/production/classes/ru/stqa/pfr/sandbox/Rectangle.class
+sandbox/out/production/classes/ru/stqa/pfr/sandbox/Point.class
+sandbox/out/production/classes/ru/stqa/pfr/sandbox/MyFirstProgram.class
+sandbox/out/production/classes/ru/stqa/pfr/sandbox/Equation.class
