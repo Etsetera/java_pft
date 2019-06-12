@@ -21,6 +21,7 @@ public class ApplicationManager {
   private String browser;
   private RegistrationHelper registrationHelper;
   private FtpHelper ftp;
+  private MailHelper mailHelper;
 
 
   public ApplicationManager(String browser) {
@@ -34,13 +35,13 @@ public class ApplicationManager {
   }
 
   public void stop() {
-    if (wd  != null) {
+    if (wd != null) {
       wd.quit();
     }
   }
 
   public HttpSession newSession() {
-  return new HttpSession(this);
+    return new HttpSession(this);
   }
 
   public String getProperty(String key) {
@@ -58,7 +59,7 @@ public class ApplicationManager {
     if (ftp == null) {
       ftp = new FtpHelper(this);
     }
-   return ftp;
+    return ftp;
   }
 
   public WebDriver getDriver() {
@@ -74,5 +75,12 @@ public class ApplicationManager {
       wd.get(properties.getProperty("web.baseUrl"));
     }
     return wd;
+  }
+
+  public MailHelper mail() {
+    if (mailHelper == null) {
+      mailHelper = new MailHelper(this);
+    }
+    return mailHelper;
   }
 }
