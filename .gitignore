@@ -31,3 +31,4 @@ sandbox/out/production/classes/ru/stqa/pfr/sandbox/MyFirstProgram.class
 sandbox/out/production/classes/ru/stqa/pfr/sandbox/Equation.class
 mantis-tests/out/test/resources/local.properties
 mantis-tests/out/test/resources/config_inc.php
+mantis-tests/out/test/resources/hibernate.cfg.xml
