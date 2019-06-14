@@ -39,11 +39,10 @@ public class TestBase {
     IssueData createdIssueData = mc.mc_issue_get("administrator", "root", BigInteger.valueOf(issueId));
     String name = createdIssueData.getStatus().getName();
     if (name.equals("resolved")) {
-      return true;
-    } else if (name.equals("closed")) {
-      return true;
-    } else
       return false;
+    } else {
+      return true;
+    }
   }
 
 
