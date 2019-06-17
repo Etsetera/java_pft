@@ -6,41 +6,30 @@ import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import com.jayway.restassured.RestAssured;
 import org.testng.SkipException;
-import org.testng.annotations.BeforeClass;
 
-import java.io.IOException;
 import java.util.Set;
 
 public class TestBase {
 
-  @BeforeClass
-  public void init() {
-    RestAssured.authentication = RestAssured.basic("288f44776e7bec4bf44fdfeb1e646490", "");
+
+  public boolean isIssueOpen(int issueId) {
+    Issue issue = getIssueById(issueId);
+    String status = issue.getState_name();
+    return !status.equals("Resolved");
   }
 
-  public boolean isIssueOpen(int issueId) throws IOException {
-    return !getIssueById(issueId).getState_name().equals("Resolved");
-  }
-
-  public Issue getIssueById(int id) throws IOException {
-    Issue issue = new Issue();
-    getIssues().stream().findFirst().map((i) -> issue.withId(i.getId()).withSubject(i.getSubject())
-            .withDescription(i.getDescription())
-            .withState_name(i.getState_name()));
+  public Issue getIssueById(int issueId) {
+    String json = RestAssured.get(String.format("http://bugify.stqa.ru/api/issues/%s.json", issueId)).asString();
+    JsonElement issues = new JsonParser().parse(json).getAsJsonObject().get("issues");
+    Set<Issue> setIssue = new Gson().fromJson(issues, new TypeToken<Set<Issue>>(){}.getType());
+    Issue issue = setIssue.iterator().next();
     return issue;
   }
 
-  public void skipIfNotFixed(int issueId) throws IOException {
+  public void skipIfNotFixed(int issueId) {
     if (isIssueOpen(issueId)) {
       throw new SkipException("Ignored because of issue " + issueId);
     }
-  }
-
-  public Set<Issue> getIssues() throws IOException {
-    String json = RestAssured.get("http://bugify.stqa.ru/api/issues.json?limit=1000").asString();
-    JsonElement parsed = new JsonParser().parse(json);
-    JsonElement issues = parsed.getAsJsonObject().get("issues");
-    return new Gson().fromJson(issues, new TypeToken<Set<Issue>>(){}.getType());
   }
 
 }
